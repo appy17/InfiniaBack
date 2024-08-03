@@ -29,6 +29,7 @@ const handleGetAboutHead = async(req,res) => {
 const handleUpdateAboutHead = async(req,res) => {
     // create logic  
     const {id} = req.params
+    console.log(req.body)
     try { 
       await AboutHeadModel.findByIdAndUpdate({_id:id}, req.body)
       res.status(200).json({ msg: "about head updated Successfully!!!", success:true })

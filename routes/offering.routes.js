@@ -5,7 +5,7 @@ const { handleCreateOffering, handleGetOffering, handleUpdateOffering } = requir
 
  OfferingRouter.post("/create", handleCreateOffering)
  OfferingRouter.get("/", handleGetOffering)
- OfferingRouter.patch("/update/:id", handleUpdateOffering)
+ OfferingRouter.put("/update/:id", handleUpdateOffering)
 
  module.exports = {
     OfferingRouter

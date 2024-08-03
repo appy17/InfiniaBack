@@ -27,6 +27,7 @@ const handleGetTestimonial = async(req,res) => {
 
 const handleUpdateTestimonial = async(req,res) => {
     // create logic  
+    console.log('hiiiiiiiiiiiii',req.body)
     const {id} = req.params
     try { 
       await TestimonialModel.findByIdAndUpdate({_id:id}, req.body)

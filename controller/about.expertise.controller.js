@@ -3,6 +3,7 @@ const { AboutExpertiseModel } = require("../model/about.expertise.model")
 
 const handleCreateAboutExpertise= async(req,res) => {
     const data = req.body
+    console.log(data);
     try {
        const about = new AboutExpertiseModel(data)
        await about.save()

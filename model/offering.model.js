@@ -8,6 +8,7 @@ const offeringSchema = mongoose.Schema({
     images: [
         {
             url: { type: String, required: true },
+            name:{type:String ,required:true },
         }
     ]
 }, {

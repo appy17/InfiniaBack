@@ -28,13 +28,15 @@ const handleGetblog = async(req,res) => {
 
 const handleUpdateblog = async(req,res) => {
     // create logic  
-    const {id} = req.params
+    const { id } = req.params
+    console.log(req.body)
     try { 
-      await BlogModel.findByIdAndUpdate({_id:id}, req.body)
+        await BlogModel.findByIdAndUpdate({ _id: id }, req.body);
+        
       res.status(200).json({ msg: "blog updated Successfully!!!", success:true })
 
     } catch (error) {
-        res.status(400).json({ msg: error.message })
+        res.status(400).json({ error: error.message, message:"Internal Server Error" })
         console.log(error.message) 
     }
 }

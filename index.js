@@ -11,9 +11,9 @@ const { ProductRouter } = require("./routes/products.routes")
 const { BlogRouter } = require("./routes/blog.routes")
 const { EcomagixRouter } = require("./routes/ecomagix.routes")
 const { BrandsRouter } = require("./routes/brands.routes")
+const { EventRouter } = require("./routes/event.routes")
+const { LoginRouter } = require("./routes/Login.routes")
 require("dotenv").config()
-
-
 
 const app = express()
 app.use(cors())
@@ -28,7 +28,8 @@ app.use("/product", ProductRouter)
 app.use("/blog", BlogRouter)
 app.use("/ecomagix", EcomagixRouter)
 app.use("/brands", BrandsRouter)
-
+app.use("/events", EventRouter);
+app.use("/login", LoginRouter);
 
 const port = process.env.PORT || 4000;
 

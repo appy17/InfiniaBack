@@ -3,6 +3,7 @@ const { OfferingModel } = require("../model/offering.model");
 
 const handleCreateOffering = async(req,res) => {
     const data = req.body
+    
     try {
        const material = new OfferingModel(data)
        await material.save()
@@ -27,10 +28,12 @@ const handleGetOffering = async(req,res) => {
 }
 
 const handleUpdateOffering = async(req,res) => {
-    // create logic  
-    const {id} = req.params
+    // create logic
+    const { id } = req.params
+    console.log('Niikhil ')
+    console.log("Fetched data ", req.body);
     try {
-      console.log(id); 
+    //   console.log(id); 
       await OfferingModel.findByIdAndUpdate({_id:id}, req.body)
       res.status(200).json({ msg: "offering material updated Successfully!!!", success:true })
 

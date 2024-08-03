@@ -3,9 +3,12 @@ const { BrandsModel } = require("../model/brands.model")
 
 const handleCreatebrands = async(req,res) => {
     const data = req.body
+    console.log("Frontend data ",data)
     try {
-       const brands = new BrandsModel(data)
-       await brands.save()
+        const brands = new BrandsModel(data)
+        
+        await brands.save()
+        console.log("hiiiiii");
        res.status(200).json({ msg: "brands added Successfully!!!", success:true })
     
     } catch (error) {

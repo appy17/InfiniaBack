@@ -2,6 +2,7 @@ const { AboutlastModel } = require("../model/about.last.model")
 
 const handleCreateAboutLast= async(req,res) => {
     const data = req.body
+    console.log('sssssssssss',data);
     try {
        const about = new AboutlastModel(data)
        await about.save()

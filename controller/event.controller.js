@@ -1,8 +1,8 @@
 const { EventModel } = require("../model/event.model")
 
-
 const handleCreateevent = async(req,res) => {
     const data = req.body
+    console.log('Frontend Data', data);
     try {
        const events = new EventModel(data)
        await events.save()
@@ -15,7 +15,8 @@ const handleCreateevent = async(req,res) => {
 
 }
 
-const handleGetevent = async(req,res) => {
+const handleGetevent = async (req, res) => {
+   
     try {
       const event = await EventModel.find()  
       res.status(200).json({ msg: "event get Successfully!!!", success:true, data:event })
@@ -26,7 +27,8 @@ const handleGetevent = async(req,res) => {
     }
 }
 
-const handleUpdateevent = async(req,res) => {
+const handleUpdateevent = async (req, res) => {
+     console.log("Front end data", req.body);
     // create logic  
     const {id} = req.params
     try { 
