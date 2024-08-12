@@ -64,7 +64,8 @@ const verifyUser = async (req, res) => {
 };
 
 const verifyToken = async (req, res) => {
-  const { token } = req.body; // Destructure 'token' from req.body
+  const { token } = req.body; 
+  console.log('Token ', req.body);
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (decoded) {

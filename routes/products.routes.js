@@ -1,12 +1,18 @@
-const express = require("express")
-const { handleCreateproduct, handleGetproduct, handleUpdateproduct } = require("../controller/products.controller")
+const express = require("express");
+const {
+  handleCreateproduct,
+  handleGetproduct,
+  handleUpdateProduct,
+  handleGetProductById,
+} = require("../controller/products.controller");
 
- const ProductRouter = express.Router()
+const ProductRouter = express.Router();
 
- ProductRouter.post("/create", handleCreateproduct)
- ProductRouter.get("/", handleGetproduct)
- ProductRouter.patch("/update/:id", handleUpdateproduct)
+ProductRouter.post("/create", handleCreateproduct);
+ProductRouter.get("/", handleGetproduct);
+ProductRouter.get("/productid/:id", handleGetProductById);
+ProductRouter.patch("/update/:id", handleUpdateProduct);
 
- module.exports = {
-    ProductRouter
- } 
+module.exports = {
+  ProductRouter,
+};

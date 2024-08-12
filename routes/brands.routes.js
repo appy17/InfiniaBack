@@ -5,7 +5,7 @@ const { handleCreatebrands, handleGetbrands, handleUpdatebrands } = require("../
 
  BrandsRouter.post("/create", handleCreatebrands)
  BrandsRouter.get("/", handleGetbrands)
- BrandsRouter.patch("/update/:id", handleUpdatebrands)
+ BrandsRouter.put("/update/:id", handleUpdatebrands)
 
  module.exports = {
     BrandsRouter

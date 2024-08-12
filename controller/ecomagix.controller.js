@@ -27,18 +27,49 @@ const handleGetEcomagix = async(req,res) => {
     }
 }
 
-const handleUpdateEcomagix = async(req,res) => {
-    // create logic  
-    const {id} = req.params
-    try { 
-      await EcomagixModel.findByIdAndUpdate({_id:id}, req.body)
-      res.status(200).json({ msg: "ecomagix updated Successfully!!!", success:true })
+const handleUpdateEcomagix = async (req, res) => {
+  const { images, name, points } = req.body;
+  console.log("Frontend Data", req.body);
+  const { id } = req.params;
 
-    } catch (error) {
-        res.status(400).json({ msg: error.message })
-        console.log(error.message) 
+  try {
+    let ecomagixItem = await EcomagixModel.findById(id);
+    console.log("Backend Data", ecomagixItem);
+
+    if (!ecomagixItem) {
+      return res
+        .status(404)
+        .json({ msg: "Ecomagix not found", success: false });
     }
-}
+
+    // Transform images to an array of URLs if schema expects only strings
+    const imageUrls = images.map((image) => image.url);
+
+    ecomagixItem.images = imageUrls;
+    ecomagixItem.name = name;
+    ecomagixItem.points = points;
+
+    const updatedEcomagix = await ecomagixItem.save();
+    console.log("Updated Ecomagix: ", updatedEcomagix);
+
+    res.status(200).json({
+      success: true,
+      msg: "Ecomagix updated successfully!!!",
+      data: updatedEcomagix,
+    });
+  } catch (error) {
+    console.error(`Error updating ecomagix: ${error}`);
+    res.status(500).json({
+      msg: "Internal server error",
+      error: error.message,
+      success: false,
+    });
+  }
+};
+  
+
+
+
 
 
 module.exports = {
