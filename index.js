@@ -34,6 +34,10 @@ app.use("/login", LoginRouter);
 
 const port = process.env.PORT || 4000;
 
+app.get('/', (req, res) => {
+    res.send('Welcome to infinia');
+  });
+
 app.listen(port, async() => {
     await connection
     console.log(`server is running at port ${port}`);
