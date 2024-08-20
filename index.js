@@ -14,6 +14,7 @@ const { BrandsRouter } = require("./routes/brands.routes")
 const { EventRouter } = require("./routes/event.routes")
 const { LoginRouter } = require("./routes/Login.routes")
 const { ProductRouter } = require("./routes/products.routes")
+const { CarousalRouter } = require("./routes/carousal.routes")
 require("dotenv").config()
 
 const app = express()
@@ -31,6 +32,9 @@ app.use("/ecomagix", EcomagixRouter)
 app.use("/brands", BrandsRouter)
 app.use("/events", EventRouter);
 app.use("/login", LoginRouter);
+app.use("/carousal", CarousalRouter);
+
+
 
 const port = process.env.PORT || 4000;
 
