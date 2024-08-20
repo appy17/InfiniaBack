@@ -28,13 +28,26 @@ const handleGetcarousal = async (req, res) => {
     }
 }
 
-const handleUpdateevent = async (req, res) => {
+const handleUpdateCarousal = async (req, res) => {
      console.log("Front end data", req.body);
     // create logic  
     const {id} = req.params
     try { 
-      await EventModel.findByIdAndUpdate({_id:id}, req.body)
-      res.status(200).json({ msg: "event updated Successfully!!!", success:true })
+      await CarousalModel.findByIdAndUpdate({_id:id}, req.body)
+      res.status(200).json({ msg: "carousal updated Successfully!!!", success:true })
+
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+        console.log(error.message) 
+    }
+}
+const handleDeleteCarousal = async (req, res) => {
+     console.log("Front end data", req.body);
+    // create logic  
+    const {id} = req.params
+    try { 
+      await CarousalModel.findByIdAndDelete({_id:id}, req.body)
+      res.status(200).json({ msg: "carousal delete Successfully!!!", success:true })
 
     } catch (error) {
         res.status(400).json({ msg: error.message })
@@ -45,5 +58,7 @@ const handleUpdateevent = async (req, res) => {
 
 module.exports = {
      handleCreatecarousal,
-     handleGetcarousal
+     handleGetcarousal,
+     handleDeleteCarousal,
+     handleUpdateCarousal
      }
