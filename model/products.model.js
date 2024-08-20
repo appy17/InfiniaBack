@@ -29,6 +29,7 @@ const productSchema = mongoose.Schema({
     image2:{type:String},
     image3:{type:String},
     image4:{type:String},
+    category:{type:String, required:true}
 },{
     versionKey:false
 })
