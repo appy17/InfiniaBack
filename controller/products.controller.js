@@ -17,8 +17,11 @@ const handleCreateproduct = async (req, res) => {
 };
 
 const handleGetproduct = async (req, res) => {
+  const {category} = req.params;
+  console.log("catappy", category);
+  
   try {
-    const product = await ProductModel.find();
+    const product = await ProductModel.find({category});
     res
       .status(200)
       .json({

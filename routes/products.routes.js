@@ -9,7 +9,7 @@ const {
 const ProductRouter = express.Router();
 
 ProductRouter.post("/create", handleCreateproduct);
-ProductRouter.get("/", handleGetproduct);
+ProductRouter.get("/:category", handleGetproduct);
 ProductRouter.get("/productid/:id", handleGetProductById);
 ProductRouter.patch("/update/:id", handleUpdateProduct);
 

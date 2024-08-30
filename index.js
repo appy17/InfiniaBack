@@ -15,6 +15,7 @@ const { EventRouter } = require("./routes/event.routes")
 const { LoginRouter } = require("./routes/Login.routes")
 const { ProductRouter } = require("./routes/products.routes")
 const { CarousalRouter } = require("./routes/carousal.routes")
+const { RelatedProductorRouter } = require("./routes/relatedProduct.routes")
 require("dotenv").config()
 
 const app = express()
@@ -33,6 +34,8 @@ app.use("/brands", BrandsRouter)
 app.use("/events", EventRouter);
 app.use("/login", LoginRouter);
 app.use("/carousal", CarousalRouter);
+app.use("/related", RelatedProductorRouter);
+
 
 
 
