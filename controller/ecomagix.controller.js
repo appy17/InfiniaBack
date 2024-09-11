@@ -1,7 +1,5 @@
 const EcomagixModel = require("../model/ecomagix.model")
 
-
-
 const handleCreateEcomagix = async(req,res) => {
     const data = req.body
     try {
@@ -42,7 +40,6 @@ const handleUpdateEcomagix = async (req, res) => {
         .json({ msg: "Ecomagix not found", success: false });
     }
 
-    // Transform images to an array of URLs if schema expects only strings
     const imageUrls = images.map((image) => image.url);
 
     ecomagixItem.images = imageUrls;
@@ -67,11 +64,6 @@ const handleUpdateEcomagix = async (req, res) => {
   }
 };
   
-
-
-
-
-
 module.exports = {
 handleCreateEcomagix,
 handleGetEcomagix,

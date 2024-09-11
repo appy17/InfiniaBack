@@ -16,6 +16,7 @@ const { LoginRouter } = require("./routes/Login.routes")
 const { ProductRouter } = require("./routes/products.routes")
 const { CarousalRouter } = require("./routes/carousal.routes")
 const { RelatedProductorRouter } = require("./routes/relatedProduct.routes")
+const {claymagixRouter} = require("./routes/claymagix.routes")
 require("dotenv").config()
 
 const app = express()
@@ -30,14 +31,13 @@ app.use("/aboutlast", AboutLastRouter)
 app.use("/product", ProductRouter)
 app.use("/blog", BlogRouter)
 app.use("/ecomagix", EcomagixRouter)
-app.use("/brands", BrandsRouter)
+// app.use("/brands", BrandsRouter)
 app.use("/events", EventRouter);
 app.use("/login", LoginRouter);
 app.use("/carousal", CarousalRouter);
 app.use("/related", RelatedProductorRouter);
 
-
-
+app.use("/claymagix", claymagixRouter);
 
 const port = process.env.PORT || 4000;
 
@@ -50,4 +50,4 @@ app.listen(port, async() => {
     console.log(`server is running at port ${port}`);
 })
 
-// 
+
