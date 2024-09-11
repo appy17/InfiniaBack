@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const description = mongoose.Schema({
   heading: {
     type: String,

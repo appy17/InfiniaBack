@@ -1,27 +1,15 @@
-const ClaymagixModel = require('../model/claymagix.model')
-
-const Createclaymagix = async (req, res) => {
-  const data = req.body;
-  console.log("hiiiiiiiiiii");
-  console.log('Data ',data)
-  try {
-    const claymagix = new ClaymagixModel(data);
-    await claymagix.save();
-    res
-      .status(200)
-      .json({ msg: "ecomagix added Successfully!!!", success: true });
-  } catch (error) {
-    res.status(400).json({ msg: error.message });
-    console.log(error.message);
-  }
-};
+const ClaymagixModel = require("../model/claymagix.model");
 
 const Getclaymagix = async (req, res) => {
   try {
     const blog = await ClaymagixModel.find();
     res
       .status(200)
-      .json({ msg: "ecomagix get Successfully!!!", success: true, data: blog });
+      .json({
+        msg: "ecomagix fetched successfully!",
+        success: true,
+        data: blog,
+      });
   } catch (error) {
     res.status(400).json({ msg: error.message });
     console.log(error.message);
@@ -29,11 +17,11 @@ const Getclaymagix = async (req, res) => {
 };
 
 const Updateclaymagix = async (req, res) => {
-  const { bgimage, title, title2, para, info, images } = req.body; 
   const { id } = req.params;
+  const { bgimage, title, title2, para, info, images } = req.body;
 
   try {
-    let claymagixItem = await ClaymagixModel.findById(id); 
+    let claymagixItem = await ClaymagixModel.findById(id);
     if (!claymagixItem) {
       return res
         .status(404)
@@ -50,9 +38,7 @@ const Updateclaymagix = async (req, res) => {
       claymagixItem.info.points = info.points || claymagixItem.info.points;
     }
 
-
-    const imageUrls = images.map((image) => image.url);
-    claymagixItem.images = imageUrls.length ? imageUrls : claymagixItem.images;
+    claymagixItem.images = images || claymagixItem.images;
 
     const updatedClaymagix = await claymagixItem.save();
     console.log("Updated Claymagix: ", updatedClaymagix);
@@ -73,7 +59,6 @@ const Updateclaymagix = async (req, res) => {
 };
 
 module.exports = {
-  Createclaymagix,
   Getclaymagix,
   Updateclaymagix,
 };

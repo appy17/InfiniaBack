@@ -12,7 +12,7 @@ const {
 router.post("/", createWoodmagix);
 router.get("/", getAllWoodmagix);
 router.get("/:id", getWoodmagixById);
-router.put("/:id", updateWoodmagix); // You can also use PATCH if you prefer
+router.put("/:id", updateWoodmagix); 
 router.delete("/:id", deleteWoodmagix);
 
 module.exports = router;
