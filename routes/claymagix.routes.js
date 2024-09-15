@@ -1,14 +1,15 @@
 const express = require("express");
-const claymagixRouter = express.Router();
+const ClaymagixRouter = express.Router();
 
 const {
-  Getclaymagix,
-  Updateclaymagix,
+  handleCreateClaymagix,
+  handleGetClaymagix,
+  handleUpdateClaymagix,
 } = require("../controller/claymagix.controller");
 
-claymagixRouter.get("/getclaymagix", Getclaymagix);
-claymagixRouter.patch("/updateclaymagix/:id", Updateclaymagix); 
+// Route definitions
+ClaymagixRouter.patch("/update/:id", handleUpdateClaymagix);
+ClaymagixRouter.post("/create", handleCreateClaymagix);
+ClaymagixRouter.get("/", handleGetClaymagix);
 
-module.exports = {
-  claymagixRouter,
-};
+module.exports = { ClaymagixRouter };  

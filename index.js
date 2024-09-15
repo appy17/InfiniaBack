@@ -16,7 +16,7 @@ const { LoginRouter } = require("./routes/Login.routes")
 const { ProductRouter } = require("./routes/products.routes")
 const { CarousalRouter } = require("./routes/carousal.routes")
 const { RelatedProductorRouter } = require("./routes/relatedProduct.routes")
-const {claymagixRouter} = require("./routes/claymagix.routes")
+const { ClaymagixRouter} = require("./routes/claymagix.routes")
 require("dotenv").config()
 
 const app = express()
@@ -37,7 +37,7 @@ app.use("/login", LoginRouter);
 app.use("/carousal", CarousalRouter);
 app.use("/related", RelatedProductorRouter);
 
-app.use("/claymagix", claymagixRouter);
+app.use("/claymagix", ClaymagixRouter);
 
 const port = process.env.PORT || 4000;
 

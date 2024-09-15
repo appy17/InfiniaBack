@@ -1,12 +1,27 @@
 const ClaymagixModel = require("../model/claymagix.model");
 
-const Getclaymagix = async (req, res) => {
+
+
+const handleCreateClaymagix = async(req,res) => {
+  const data = req.body
+  try {
+     const claymagix = new ClaymagixModel(data)
+     await claymagix.save()
+     res.status(200).json({ msg: "claymagix added Successfully!!!", success:true })
+  
+  } catch (error) {
+     res.status(400).json({ msg: error.message })
+     console.log(error.message)
+  }
+
+}
+const handleGetClaymagix = async (req, res) => {
   try {
     const blog = await ClaymagixModel.find();
     res
       .status(200)
       .json({
-        msg: "ecomagix fetched successfully!",
+        msg: "claymagix fetched successfully!",
         success: true,
         data: blog,
       });
@@ -16,7 +31,7 @@ const Getclaymagix = async (req, res) => {
   }
 };
 
-const Updateclaymagix = async (req, res) => {
+const handleUpdateClaymagix = async (req, res) => {
   const { id } = req.params;
   const { bgimage, title, title2, para, info, images } = req.body;
 
@@ -59,6 +74,7 @@ const Updateclaymagix = async (req, res) => {
 };
 
 module.exports = {
-  Getclaymagix,
-  Updateclaymagix,
+  handleGetClaymagix,
+  handleUpdateClaymagix,
+  handleCreateClaymagix
 };
