@@ -1,41 +1,46 @@
 const mongoose = require('mongoose');
 
-const details = mongoose.Schema({
-  para: {
-    type:String
-  },
-  properties: [
-    {
-      title: {
-        type:String
-      },
-      description: {
-        type:String
-      }
-    }
-  ]
-})
-
-const skyaceSchema = mongoose.Schema({
+// Define the schema for properties (features)
+const PropertySchema = mongoose.Schema({
   title: {
-    type:String
+    type: String
+  },
+  description: {
+    type: String
+  }
+});
+
+// Define the main schema for Skyace
+const SkyaceSchema = mongoose.Schema({
+  title: {
+    type: String
+  },
+  title2: {
+    type: String
   },
   backgroundImage: {
-    type:String
+    type: String
   },
   heading: {
-    type:String
+    type: String
   },
-  brochure: {
-    type:File
+  // brochure: {
+  //   type: String
+  // },
+  info: {
+    para: {
+      type: String
+    },
+    properties: [PropertySchema] // Use PropertySchema for properties
   },
-  info:details,
   images: {
-    type:[String]
+    type: [String] // Array of image URLs
   }
-})
+});
 
-const SkyaceModel = mongoose.Model("skyace", skyaceSchema);
+// Create the model from the schema
+const SkyaceModel = mongoose.model("Skyace", SkyaceSchema);
+
 module.exports = {
   SkyaceModel
-}
+};

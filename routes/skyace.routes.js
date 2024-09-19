@@ -1,16 +1,12 @@
 const express = require("express");
-const {
-  createSkyace,
-  updateSkyace,
-  getSkyace,
-} = require("../controllers/skyaceController");
-const router = express.Router();
+const { createSkyace, updateSkyace, getSkyace } = require("../controller/skyace.controller");
+const SkyaceRouter = express.Router();
 
-router.post("/skyace", createSkyace);
+SkyaceRouter.post("/create", createSkyace);
 
-router.patch("/skyace", updateSkyace);
+SkyaceRouter.patch("/update/:id", updateSkyace);
 
-router.get("/skyace", getSkyace);
+SkyaceRouter.get("/", getSkyace);
 
 
-module.exports = router;
+module.exports = {SkyaceRouter};

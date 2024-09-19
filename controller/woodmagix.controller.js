@@ -1,7 +1,10 @@
-const WoodmagixModel = require("../models/woodmagixModel");
+const express = require("express");
+const { WoodmagixModel } = require("../model/woodmagix.model");
+
+const WoodmagixRouter = express.Router();
 
 // Create a new document
-const createWoodmagix = async (req, res) => {
+const handlecreateWoodmagix = async (req, res) => {
   try {
     const woodmagix = new WoodmagixModel(req.body);
     const savedWoodmagix = await woodmagix.save();
@@ -12,7 +15,7 @@ const createWoodmagix = async (req, res) => {
 };
 
 // Get all documents
-const getAllWoodmagix = async (req, res) => {
+const handleGetAllWoodmagix = async (req, res) => {
   try {
     const woodmagixItems = await WoodmagixModel.find();
     res.status(200).json(woodmagixItems);
@@ -21,21 +24,8 @@ const getAllWoodmagix = async (req, res) => {
   }
 };
 
-// Get document by ID
-const getWoodmagixById = async (req, res) => {
-  try {
-    const woodmagix = await WoodmagixModel.findById(req.params.id);
-    if (!woodmagix) {
-      return res.status(404).json({ message: "Item not found" });
-    }
-    res.status(200).json(woodmagix);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 // Update document by ID
-const updateWoodmagix = async (req, res) => {
+const handleUpdateWoodmagix = async (req, res) => {
   try {
     const updatedWoodmagix = await WoodmagixModel.findByIdAndUpdate(
       req.params.id,
@@ -52,7 +42,7 @@ const updateWoodmagix = async (req, res) => {
 };
 
 // Delete document by ID
-const deleteWoodmagix = async (req, res) => {
+const handleDeleteWoodmagix = async (req, res) => {
   try {
     const deletedWoodmagix = await WoodmagixModel.findByIdAndDelete(
       req.params.id
@@ -66,10 +56,15 @@ const deleteWoodmagix = async (req, res) => {
   }
 };
 
-module.exports = {
-  createWoodmagix,
-  getAllWoodmagix,
-  getWoodmagixById,
-  updateWoodmagix,
-  deleteWoodmagix,
+// Routes for CRUD operations
+// WoodmagixRouter.post("/create", handlecreateWoodmagix);
+// WoodmagixRouter.get("/", handleGetAllWoodmagix);
+// WoodmagixRouter.patch("/update/:id", handleUpdateWoodmagix);
+// WoodmagixRouter.delete("/:id", handleDeleteWoodmagix);
+
+module.exports = { 
+  handleGetAllWoodmagix,
+  handleUpdateWoodmagix,
+  handleDeleteWoodmagix,
+  handlecreateWoodmagix
 };

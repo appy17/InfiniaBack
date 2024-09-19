@@ -1,18 +1,10 @@
 const express = require("express");
-const router = express.Router();
-const {
-  createWoodmagix,
-  getAllWoodmagix,
-  getWoodmagixById,
-  updateWoodmagix,
-  deleteWoodmagix,
-} = require("../controllers/woodmagixController");
+const { handlecreateWoodmagix, handleGetAllWoodmagix, handleUpdateWoodmagix, handleDeleteWoodmagix } = require("../controller/woodmagix.controller");
+const WoodmagixRouter = express.Router();
 
-// Routes for CRUD operations
-router.post("/", createWoodmagix);
-router.get("/", getAllWoodmagix);
-router.get("/:id", getWoodmagixById);
-router.put("/:id", updateWoodmagix); 
-router.delete("/:id", deleteWoodmagix);
 
-module.exports = router;
+WoodmagixRouter.post("/create",handlecreateWoodmagix);
+WoodmagixRouter.get("/",handleGetAllWoodmagix);
+WoodmagixRouter.patch("/update/:id",handleUpdateWoodmagix);
+WoodmagixRouter.delete("/:id",handleDeleteWoodmagix)
+module.exports = {WoodmagixRouter};

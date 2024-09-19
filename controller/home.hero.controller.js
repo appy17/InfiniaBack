@@ -26,7 +26,7 @@ const handleGetHome = async(req,res) => {
 }
 
 const handleUpdateHome = async(req,res) => {
-    // create logic  6693feb3c99fd1ecbad72e61
+
     const {id} = req.params
     try {
       console.log(id); 
@@ -34,7 +34,7 @@ const handleUpdateHome = async(req,res) => {
       res.status(200).json({ msg: "hero  data updated Successfully!!!", success:true })
 
     } catch (error) {
-        res.status(400).json({ msg: error.message })
+        res.status(500).json({ msg: error.message })
         console.log(error.message) 
     }
 }

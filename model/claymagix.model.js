@@ -1,35 +1,44 @@
+
+
 const mongoose = require('mongoose');
 
-const description = mongoose.Schema({
+const descriptionSchema = new mongoose.Schema({
   heading: {
-    type:String
+    type: String,
+    required: true 
   },
   points: [
     {
-      type:String
+      type: String  
     }
   ]
-})
+});
 
-const claymagixSchema = mongoose.Schema({
+const claymagixSchema = new mongoose.Schema({
   bgimage: {
-    type: String
+    type: String, 
   },
   title: {
-    type: String
+    type: String,
+    required: true  
   },
   title2: {
-    type: String
+    type: String  
   },
   para: {
-    type: String
+    type: String,
+    required: true  
   },
-  info:description,
+  info: [descriptionSchema],  
   images: [
-    {type: String}
+    {
+      type: String,
+      required: true 
+    }
   ]
-})
+});
 
-const ClaymagixModel = mongoose.model("claymagix", claymagixSchema);
+
+const ClaymagixModel = mongoose.model("Claymagix", claymagixSchema);
 
 module.exports = ClaymagixModel;
