@@ -1,8 +1,5 @@
 const express = require("express");
 const { WoodmagixModel } = require("../model/woodmagix.model");
-
-
-
 // Create a new document
 const handlecreateWoodmagix = async (req, res) => {
   try {
