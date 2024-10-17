@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define the schema for properties (features)
+
 const PropertySchema = mongoose.Schema({
   title: {
     type: String
@@ -8,9 +8,10 @@ const PropertySchema = mongoose.Schema({
   description: {
     type: String
   }
+
 });
 
-// Define the main schema for Skyace
+
 const SkyaceSchema = mongoose.Schema({
   title: {
     type: String
@@ -24,23 +25,24 @@ const SkyaceSchema = mongoose.Schema({
   heading: {
     type: String
   },
-  // brochure: {
-  //   type: String
-  // },
-  info: {
-    para: {
-      type: String
-    },
-    properties: [PropertySchema] // Use PropertySchema for properties
-  },
+  info: [PropertySchema],
+  features: [
+    {
+      title: {
+        type: String,
+      }
+    }
+  ],
   images: {
-    type: [String] // Array of image URLs
+    type: [String] 
   }
 });
 
-// Create the model from the schema
+
 const SkyaceModel = mongoose.model("Skyace", SkyaceSchema);
 
 module.exports = {
   SkyaceModel
 };
+
+

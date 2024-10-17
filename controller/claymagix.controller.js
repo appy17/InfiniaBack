@@ -33,43 +33,15 @@ const handleGetClaymagix = async (req, res) => {
 
 const handleUpdateClaymagix = async (req, res) => {
   const { id } = req.params;
-  const { bgimage, title, title2, para, info, images } = req.body;
-
+  // const { bgimage, title, title2, para, info, images } = req.body;
   try {
-    let claymagixItem = await ClaymagixModel.findById(id);
-    if (!claymagixItem) {
-      return res
-        .status(404)
-        .json({ msg: "Claymagix item not found", success: false });
-    }
+    console.log(id); 
+    await ClaymagixModel.findByIdAndUpdate({_id:id}, req.body)
+    res.status(200).json({ msg: "claymagix  data updated Successfully!!!", success:true })
 
-    claymagixItem.bgimage = bgimage || claymagixItem.bgimage;
-    claymagixItem.title = title || claymagixItem.title;
-    claymagixItem.title2 = title2 || claymagixItem.title2;
-    claymagixItem.para = para || claymagixItem.para;
-
-    if (info) {
-      claymagixItem.info.heading = info.heading || claymagixItem.info.heading;
-      claymagixItem.info.points = info.points || claymagixItem.info.points;
-    }
-
-    claymagixItem.images = images || claymagixItem.images;
-
-    const updatedClaymagix = await claymagixItem.save();
-    console.log("Updated Claymagix: ", updatedClaymagix);
-
-    res.status(200).json({
-      success: true,
-      msg: "Claymagix updated successfully!",
-      data: updatedClaymagix,
-    });
   } catch (error) {
-    console.error(`Error updating Claymagix: ${error}`);
-    res.status(500).json({
-      msg: "Internal server error",
-      error: error.message,
-      success: false,
-    });
+      res.status(500).json({ msg: error.message })
+      console.log(error.message) 
   }
 };
 

@@ -8,9 +8,8 @@ const descriptionSchema = new mongoose.Schema({
     required: true 
   },
   points: [
-    {
-      type: String  
-    }
+
+    
   ]
 });
 

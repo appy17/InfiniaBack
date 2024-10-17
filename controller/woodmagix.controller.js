@@ -1,7 +1,7 @@
 const express = require("express");
 const { WoodmagixModel } = require("../model/woodmagix.model");
 
-const WoodmagixRouter = express.Router();
+
 
 // Create a new document
 const handlecreateWoodmagix = async (req, res) => {
@@ -14,7 +14,7 @@ const handlecreateWoodmagix = async (req, res) => {
   }
 };
 
-// Get all documents
+
 const handleGetAllWoodmagix = async (req, res) => {
   try {
     const woodmagixItems = await WoodmagixModel.find();
@@ -41,7 +41,6 @@ const handleUpdateWoodmagix = async (req, res) => {
   }
 };
 
-// Delete document by ID
 const handleDeleteWoodmagix = async (req, res) => {
   try {
     const deletedWoodmagix = await WoodmagixModel.findByIdAndDelete(
@@ -56,11 +55,7 @@ const handleDeleteWoodmagix = async (req, res) => {
   }
 };
 
-// Routes for CRUD operations
-// WoodmagixRouter.post("/create", handlecreateWoodmagix);
-// WoodmagixRouter.get("/", handleGetAllWoodmagix);
-// WoodmagixRouter.patch("/update/:id", handleUpdateWoodmagix);
-// WoodmagixRouter.delete("/:id", handleDeleteWoodmagix);
+
 
 module.exports = { 
   handleGetAllWoodmagix,

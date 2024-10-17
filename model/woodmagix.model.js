@@ -1,51 +1,113 @@
+// const mongoose = require("mongoose");
+
+// // Sub-point schema
+// const subPointSchema = new mongoose.Schema({
+//   description: {
+//     type: String
+//   },
+// });
+
+// const pointSchema = new mongoose.Schema({
+//   title: {
+//     type: String
+
+//   },
+//   subPoints: [subPointSchema],
+// });
+
+
+// const descriptionSchema = new mongoose.Schema({
+//   points: [pointSchema],
+// });
+
+
+// const woodmagixSchema = new mongoose.Schema({
+//   bgimage: {
+//     type: String,
+//   },
+//   title: {
+//     type: String,
+//     required: true,
+//   },
+//   title2: {
+//     type: String,
+//   },
+//   subpoints: [
+//     {
+//       type: String,
+//     },
+//   ],
+
+//   para: descriptionSchema,
+//   images: [
+//     {
+//       type: String,
+//       required: true,
+//     },
+//   ],
+// });
+
+// const WoodmagixModel = mongoose.model("woodmagix", woodmagixSchema);
+
+// module.exports = { WoodmagixModel };
+
+
+
+
+// const subPointSchema = new mongoose.Schema({
+//   description: {
+//     type: String
+//   },
+// }, { _id: false }); 
+
+
+
 const mongoose = require('mongoose');
 
-// Sub-point schema
-const subPointSchema = new mongoose.Schema({
-  description: {
-    type: String,
-    required: true
-  }
-});
-
-
-const pointSchema = new mongoose.Schema({
-  point: {
-    type: String,
-    required: true
-  },
-  subPoints: [subPointSchema]  
-});
-
-// Description schema with points that have sub-points
 const descriptionSchema = new mongoose.Schema({
   heading: {
     type: String,
-    required: true
+    required: true 
   },
-  points: [pointSchema]  // Points are an array of pointSchema
+  points: [
+
+    
+  ]
 });
 
-// Main Woodmagix schema
 const woodmagixSchema = new mongoose.Schema({
   bgimage: {
-    type: String
+    type: String, 
   },
   title: {
     type: String,
-    required: true
+    required: true  
   },
   title2: {
-    type: String
+    type: String  
   },
-  para: descriptionSchema,  // Para with subpoints and main points
-  info: descriptionSchema,  // Info with subpoints and main points
-  images: [{
+  para: {
     type: String,
-    required: true
-  }]
+    required: true  
+  },
+  info: [descriptionSchema],  
+  subpoints: [
+    {
+      title: {
+        type: String,
+     
+      },
+    },
+  ],
+  images: [
+    {
+      type: String,
+      required: true 
+    }
+  ]
 });
 
-const WoodmagixModel = mongoose.model('woodmagix', woodmagixSchema);
 
-module.exports = { WoodmagixModel };
+const WoodmagixModel = mongoose.model("woodmagix", woodmagixSchema);
+
+module.exports = {WoodmagixModel};
